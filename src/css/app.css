@@ -3,5 +3,15 @@ div.bar {
     width: 20px;
     height: 75px;   /* We'll override this later */
     background-color: teal;
-    margin-right: 2px;
+}
+
+.dimensions {
+    width: 500px;
+    height: 500px;
+}
+
+.bar {
+  fill: teal;
+  stroke-width: 3px;
+  stroke: bisque
 }
