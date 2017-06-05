@@ -41,7 +41,7 @@
       .style('height', function(d){ return d*5 + 'px'})
   }
 
-  const drawWithSvg = function () {
+  const drawBarsWithSvg = function () {
     let dataSet = []
     for( let i=0; i<25; i++ ) {
       dataSet.push(Math.round(Math.random() * height))
@@ -51,7 +51,7 @@
       .select('#svgChart')
       .attr('width', width)
       .attr('height', height)
-      .selectAll('g')
+      .selectAll('rect')
       .data(dataSet)
       .enter()
       .append('rect')
@@ -77,7 +77,7 @@
       .select('#svgChart')
       .attr('width', width)
       .attr('height', height)
-      .selectAll('g')
+      .selectAll('circle')
       .data(dataSet)
       .enter()
       .append('circle')
