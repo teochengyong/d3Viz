@@ -95,11 +95,10 @@
         return `rgba(${ index / 5 === 1 ? Math.round(255*d) : 128}, ${Math.round(255*d)}, ${ index / 4 === 1 ? Math.round(255*d) : 128}, ${d})`
       })
       .attr('stroke-width', '3')             
-  }  
+  }
 
   d3Viz.draw = draw
   d3Viz.drawRandom = drawRandom
-  d3Viz.drawWithSvg = drawWithSvg
   d3Viz.drawCirclesWithSvg = drawCirclesWithSvg
   window.d3Viz = d3Viz
 })(window)
