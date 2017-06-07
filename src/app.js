@@ -11,30 +11,14 @@
       .enter()
       .append('div')
       .attr('class', 'bar')
-      .style('height', function (d) { return d * 5 + 'px' })
-  }
-
-  const drawRandom = function () {
-    let dataSet = []
-    for (let i = 0; i < 25; i++) {
-      dataSet.push(Math.round(Math.random() * 30))
-    }
-    let chart = w.d3.select('body')
-    chart.selectAll('p')
-      .data(dataSet)
-      .enter()
-      .append('div')
-      .attr('class', 'bar')
-      .style('height', function (d) { return d * 5 + 'px' })
+      .style('height', function (d) { return d * 200 + 'px' })
   }
 
   const drawBarsWithSvg = function () {
-    let dataSet = []
-    for (let i = 0; i < 25; i++) {
-      dataSet.push(Math.round(Math.random() * height))
-    }
+    const scale = 200
+    let dataSet = generateRandomDataSet(25).map(data => data * scale)
     let barWidth = Math.round(width / dataSet.length)
-    let chart = w.select('#svgChart')
+    let chart = w.d3.select('#svgChart')
 
     chart.attr('width', width)
       .attr('height', height)
@@ -54,10 +38,7 @@
   }
 
   const drawCirclesWithSvg = function () {
-    let dataSet = []
-    for (let i = 0; i < 5; i++) {
-      dataSet.push(Math.random())
-    }
+    let dataSet = generateRandomDataSet(5)
     let radius = Math.round(width / dataSet.length) / 2
     let chart = w.d3.select('#svgChart')
 
@@ -68,7 +49,7 @@
       .enter()
       .append('circle')
       .attr('cx', function (d, index) {
-        return index * radius + 2 * radius
+        return index * radius + 2 * radius + 25
       })
       .attr('cy', function (d, index) {
         return index * radius + 2 * radius
@@ -83,9 +64,17 @@
       .attr('stroke-width', '3')
   }
 
+  const generateRandomDataSet = function (size) {
+    let dataSet = []
+    for (let i = 0; i < size; i++) {
+      dataSet.push(Math.random())
+    }
+    return dataSet
+  }
+
   d3Viz.draw = draw
-  d3Viz.drawRandom = drawRandom
   d3Viz.drawBarsWithSvg = drawBarsWithSvg
   d3Viz.drawCirclesWithSvg = drawCirclesWithSvg
+  d3Viz.generateRandomDataSet = generateRandomDataSet
   window.d3Viz = d3Viz
 })(window)
