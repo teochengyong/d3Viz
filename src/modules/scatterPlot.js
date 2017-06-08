@@ -1,9 +1,10 @@
 (function (context) {
-  const module = context.d3Viz
+  const d3Viz = context.d3Viz
+  const d3 = context.d3
   const width = 500
   const height = 300
-  const padding = 20
-  var dataset = [
+  const padding = 40
+  const defaultDataset = [
     [5, 20],
     [480, 90],
     [250, 50],
@@ -17,25 +18,31 @@
     [600, 150]
   ]
 
-  const drawScatterPlot = function () {
-    // const yScale = 4
-    // const barWidth = Math.round((width / dataset.length))
-    // const barPadding = 4
-    // const maxData = getMax(dataset)
-    let svg = context.d3.select('body')
+  const drawScatterPlot = function (dataset) {
+    dataset = dataset || defaultDataset
+    let svg = d3.select('body')
       .append('svg')
       .attr('width', width)
       .attr('height', height)
 
-    const xScale = context.d3.scaleLinear()
-      .domain([0, context.d3.max(dataset, function (d) { return d[0] })])
+    const xScale = d3.scaleLinear()
+      .domain([0, d3.max(dataset, function (d) { return d[0] })])
       .range([padding, width - padding])
-    const yScale = context.d3.scaleLinear()
-      .domain([0, context.d3.max(dataset, function (d) { return d[1] })])
+    const yScale = d3.scaleLinear()
+      .domain([0, d3.max(dataset, function (d) { return d[1] })])
       .range([height - padding, padding])
-    const rScale = context.d3.scaleLinear()
-      .domain([0, context.d3.max(dataset, function (d) { return d[1] })])
+    const rScale = d3.scaleLinear()
+      .domain([0, d3.max(dataset, function (d) { return d[1] })])
       .range([0, 5])
+
+    const xAxis = d3.axisBottom()
+      .scale(xScale)
+      .ticks(5)
+
+    const yAxis = d3.axisLeft()
+      .scale(yScale)
+      .ticks(5)
+
 
     svg.selectAll('circle')
       .data(dataset)
@@ -70,6 +77,15 @@
       .attr('font-size', '11px')
       .attr('fill', 'red')
       .attr('text-anchor', 'middle')
+
+    svg.append('g')
+      .attr('class', 'axis')
+      .attr('transform', `translate(0, ${height - padding})`)
+      .call(xAxis)
+    svg.append('g')
+      .attr('class', 'axis')
+      .attr('transform', `translate(${padding}, 0)`)
+      .call(yAxis)
   }
-  module.drawScatterPlot = drawScatterPlot
+  d3Viz.drawScatterPlot = drawScatterPlot
 })(window)
