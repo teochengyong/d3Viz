@@ -22,13 +22,11 @@
 
   const drawBarChart = function () {
     const yScale = 4
-    const barPadding = 4
     const xScale = d3.scaleBand()
       .domain(d3.range(dataset.length))
       .rangeRound([0, width])
       .padding(0.1)
 
-    const barWidth = Math.round((width / dataset.length))
     const maxData = getMax(dataset)
     let svg = context.d3.select('body')
       .append('svg')
