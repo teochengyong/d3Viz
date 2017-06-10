@@ -21,7 +21,9 @@
   }
 
   const drawBarChart = function () {
-    const yScale = 4
+    const yScale = d3.scaleLinear()
+      .domain([0, d3.max(dataset)])
+      .range([0, height])
     const xScale = d3.scaleBand()
       .domain(d3.range(dataset.length))
       .rangeRound([0, width])
@@ -32,6 +34,7 @@
       .append('svg')
       .attr('width', width)
       .attr('height', height)
+      .attr('id', 'bar')
 
     svg.selectAll('rect')
       .data(dataset)
@@ -41,13 +44,13 @@
         return xScale(index)
       })
       .attr('y', function (d, index) {
-        return height - d * yScale
+        return height - yScale(d)
       })
       .attr('width', function (d, index) {
         return xScale.bandwidth()
       })
       .attr('height', function (d) {
-        return d * yScale + 'px'
+        return yScale(d) + 'px'
       })
       // drawing relative fill according to max data
       .attr('fill', function (d) {
@@ -66,7 +69,7 @@
         return xScale(index) + (xScale.bandwidth() / 2)
       })
       .attr('y', function (data, index) {
-        return (height - data * yScale) + 15
+        return (height - yScale(data)) + 15
       })
       .attr('font-family', 'sans-serif')
       .attr('font-size', '11px')
