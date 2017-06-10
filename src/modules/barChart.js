@@ -1,7 +1,8 @@
 (function (context) {
   const module = context.d3Viz
-  const width = 500
-  const height = 100
+  const d3 = context.d3
+  const width = 600
+  const height = 250
   const dataset = [
     5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
     11, 12, 15, 20, 18, 17, 16, 18, 23, 25
@@ -19,10 +20,15 @@
     return curMax
   }
 
-  const drawBar = function () {
+  const drawBarChart = function () {
     const yScale = 4
-    const barWidth = Math.round((width / dataset.length))
     const barPadding = 4
+    const xScale = d3.scaleBand()
+      .domain(d3.range(dataset.length))
+      .rangeRound([0, width])
+      .padding(0.1)
+
+    const barWidth = Math.round((width / dataset.length))
     const maxData = getMax(dataset)
     let svg = context.d3.select('body')
       .append('svg')
@@ -34,13 +40,13 @@
       .enter()
       .append('rect')
       .attr('x', function (d, index) {
-        return index * barWidth
+        return xScale(index)
       })
       .attr('y', function (d, index) {
         return height - d * yScale
       })
       .attr('width', function (d, index) {
-        return (barWidth - barPadding) + 'px'
+        return xScale.bandwidth()
       })
       .attr('height', function (d) {
         return d * yScale + 'px'
@@ -59,7 +65,7 @@
         return d
       })
       .attr('x', function (data, index) {
-        return (index * barWidth) + (barWidth - barPadding) / 2
+        return xScale(index) + (xScale.bandwidth() / 2)
       })
       .attr('y', function (data, index) {
         return (height - data * yScale) + 15
@@ -69,5 +75,5 @@
       .attr('fill', 'white')
       .attr('text-anchor', 'middle')
   }
-  module.drawBar = drawBar
+  module.drawBarChart = drawBarChart
 })(window)
