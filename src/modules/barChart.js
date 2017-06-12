@@ -30,7 +30,7 @@
       .padding(0.1)
 
     const maxData = getMax(dataset)
-    let svg = context.d3.select('body')
+    let svg = context.d3.select('#chart')
       .append('svg')
       .attr('width', width)
       .attr('height', height)
@@ -75,6 +75,22 @@
       .attr('font-size', '11px')
       .attr('fill', 'white')
       .attr('text-anchor', 'middle')
+
+    d3.select('#bar')
+      .on('click', function () {
+        // New values for dataset
+        const dataset = [11, 12, 15, 20, 18, 17, 16, 18, 23, 25,
+          5, 10, 13, 19, 21, 25, 22, 18, 15, 13]
+
+        svg.selectAll('rect')
+          .data(dataset)
+          .attr('y', function (d) {
+            return height - yScale(d)
+          })
+          .attr('height', function (d) {
+            return yScale(d)
+          })
+      })
   }
   module.drawBarChart = drawBarChart
 })(window)
