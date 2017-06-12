@@ -28,4 +28,3 @@
     }
     context.d3Viz.drawCircles = drawCircles
   })(window)
-
