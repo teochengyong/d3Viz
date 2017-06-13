@@ -3,10 +3,6 @@
   const d3 = context.d3
   const width = 600
   const height = 250
-  const dataset = [
-    5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-    11, 12, 15, 20, 18, 17, 16, 18, 23, 25
-  ]
 
   const getMax = function (array) {
     let curMax
@@ -20,7 +16,7 @@
     return curMax
   }
 
-  const drawBarChart = function () {
+  const drawBarChart = function (dataset) {
     const yScale = d3.scaleLinear()
       .domain([0, d3.max(dataset)])
       .range([0, height])
@@ -35,6 +31,7 @@
       .attr('width', width)
       .attr('height', height)
       .attr('id', 'bar')
+      .attr('viewBox', '0 0 600 250')
 
     svg.selectAll('rect')
       .data(dataset)
