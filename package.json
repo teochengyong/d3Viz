@@ -12,6 +12,8 @@
   "dependencies": {
     "d3": "^4.9.1",
     "http-server": "^0.10.0",
+    "material-components-web": "^0.13.0",
+    "postcss": "^6.0.3",
     "standard": "^10.0.2"
   }
 }

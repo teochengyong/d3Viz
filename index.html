@@ -1,21 +1,70 @@
-<html>
-    <head>
+<!DOCTYPE html>
+    <head class="mdc-typography">
+        <meta name="theme-color" content="#f5f5f5">
         <title>Visualizing Singapore with data</title>
-        <!--<link rel="stylesheet" href="src/css/semantic-2.2.10.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="node_modules/material-components-web/dist/material-components-web.css">
         <link rel="stylesheet" href="src/css/app.css">
         <link rel="stylesheet" href="src/css/chart.css">
+        <style>
+        </style>
     </head>
-    <body>
-        <h1>Comparsion between private car operators and taxis in Singapore</h1>
-        <div id="chart" class="chartWrapper"></div>
-          <!--<svg id="svgChart" width="500" height="500"></svg>-->
+    <body class="app-body">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+      <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <!--<a href="#" class="material-icons mdc-toolbar__icon--menu">menu</a>-->
+          <span class="mdc-toolbar__title">ChengYong</span>
         </section>
-        <script src="src/dependencies/d3.min.js"></script>
-        <script src="src/modules/base.js"></script>
-        <script src="src/modules/barChartWithDiv.js"></script>
-        <script src="src/modules/barChart.js"></script>
-        <script src="src/modules/scatterPlot.js"></script>
-        <script src="src/modules/circles.js"></script>
-        <script src="src/app.js"></script>
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+          <nav class="toolbar-nav">
+            <ul class="toolbar-nav__links">
+              <li>
+                <a href="#sectors" class="toolbar-nav-link toolbar-nav-link--active" aria-label="visualizations">
+                  <span class="toolbar-nav-link__text">Visualizations</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </section>
+      </div>
+    </header>
+    <div class="mdc-toolbar-fixed-adjust app-content">
+      <nav class="mdc-permanent-drawer">
+        <div class="mdc-list-group app-list-group">
+          <h3 class="mdc-list-group__subheader">Transportations</h3>
+          <nav class="mdc-list">
+            <a class="mdc-list-item mdc-permanent-drawer--selected" href="#">Taxis vs Private Cars</a>
+          </nav>
+          <hr class="mdc-list-divider">
+        </div>
+      </nav>
+      <main class="app-main">
+        <h1 class="mdc-typography--display1">Taxis vs Private Cars</h1>
+        <!--<p class="mdc-typography--body1">It sits to the left of this content.</p>-->
+        <div class="extra-content-wrapper">
+          <div id="chart" class="chartWrapper"></div>
+          <!--<button id="toggle-wide">Toggle extra-wide content</button>-->
+          <!--<div id="extra-wide-content" class="mdc-elevation--z2" style="display: none;">&nbsp;</div>-->
+        </div>
+        <div class="extra-content-wrapper">
+          <!--<button id="toggle-tall">Toggle extra-tall content</button>-->
+          <!--<div id="extra-tall-content" class="mdc-elevation--z2" style="display: none;">&nbsp;</div>-->
+        </div>
+      </main>
+    </div>
+        <!--<h1>Comparsion between private car operators and taxis in Singapore</h1>-->
+
+          <!--<svg id="svgChart" width="500" height="500"></svg>-->
+      <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
+      <script>mdc.autoInit()</script>
+      <script src="src/dependencies/d3.min.js"></script>
+      <script src="src/modules/base.js"></script>
+      <script src="src/modules/barChartWithDiv.js"></script>
+      <script src="src/modules/barChart.js"></script>
+      <script src="src/modules/scatterPlot.js"></script>
+      <script src="src/modules/circles.js"></script>
+      <script src="src/app.js"></script>
     </body>
 </html>

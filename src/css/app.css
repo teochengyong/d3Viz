@@ -27,3 +27,111 @@ div.bar {
   font-family: sans-serif;
   font-size: 11px;
 }
+/* normalize */
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* base */
+html {
+  height: 100%;
+}
+.toolbar-nav__links > li a,
+.toolbar-nav__links > li a:active,
+.toolbar-nav__links > li a:hover,
+.toolbar-nav__links > li a:link,
+.toolbar-nav__links > li a:visited {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: .875rem;
+    font-weight: 400;
+    letter-spacing: .04em;
+    line-height: 1.25rem;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+nav ol, nav ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+/* toolbars */
+.toolbar-nav {
+    margin-top: -20px;
+    height: 72px;
+}
+
+.toolbar-nav__links {
+  display: flex;
+  height: 100%;
+}
+
+.toolbar-nav__links > li {
+  height: 100%;
+}
+
+.toolbar-nav-link, .toolbar-nav-link:active, .toolbar-nav-link:hover, .toolbar-nav-link:link, .toolbar-nav-link:visited {
+    color: #fff;
+    fill: #fff;
+}
+
+.toolbar-nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 14px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.toolbar-nav-link__text {
+    position: relative;
+    top: 8px;
+}
+.app-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+.app-content {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.app-main {
+  padding-left: 16px;
+}
+
+.mdc-list-group.app-list-group .mdc-list-group__subheader {
+  padding-left: 16px;
+}
+
+.mdc-list-group .mdc-list .mdc-list-item {
+  padding-left: 32px;
+}
+
+@media (max-width: 1300px) and (min-width: 721px) {
+  .mdc-toolbar__row {
+    max-width: 1400px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* toolbars */
