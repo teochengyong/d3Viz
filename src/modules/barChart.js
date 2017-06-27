@@ -1,7 +1,7 @@
 (function (context) {
   const module = context.d3Viz
   const d3 = context.d3
-  const width = 200000
+  const width = 20000
   const height = 250
 
   const drawBarChart = function (dataset, options) {

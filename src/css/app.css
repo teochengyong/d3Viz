@@ -132,6 +132,20 @@ nav ol, nav ul {
     padding-left: 10px;
     padding-right: 10px;
   }
+  /* chart */
+  .chartWrapper {
+    overflow-x: scroll;
+    width: 800px;
+  }
 }
 
+@media (max-width: 2000px) and (min-width: 1301px) {
+  /* chart */
+  .chartWrapper {
+    overflow-x: scroll;
+    width: 1650px;
+  }
+}
 /* toolbars */
+
+
