@@ -126,6 +126,11 @@ nav ol, nav ul {
   padding-left: 32px;
 }
 
+.mdc-toolbar__title-link, .mdc-toolbar__title-link:active, .mdc-toolbar__title-link:hover, .mdc-toolbar__title-link:link, .mdc-toolbar__title-link:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
 @media (max-width: 1300px) and (min-width: 721px) {
   .mdc-toolbar__row {
     max-width: 1400px;
